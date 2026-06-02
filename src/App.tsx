@@ -11,27 +11,48 @@ import { Goals } from "./pages/Goals";
 import { Wallets } from "./pages/Wallets";
 import { Settings } from "./pages/Settings";
 import { useFinance } from "./hooks/useFinance";
+import { useAuth } from "./hooks/useAuth";
 import { PageKey } from "./types";
+import { Landing } from "./pages/Landing";
+import { AuthPage } from "./pages/Auth";
 
 export default function App() {
-  const finance = useFinance();
+  const auth = useAuth();
+  const finance = useFinance(auth.currentUser);
   const [page, setPage] = useState<PageKey>("dashboard");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [entry, setEntry] = useState<"landing" | "login" | "register">("landing");
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", finance.settings.theme === "dark");
-  }, [finance.settings.theme]);
+    document.documentElement.classList.toggle("dark", Boolean(auth.currentUser && finance.settings.theme === "dark"));
+  }, [auth.currentUser, finance.settings.theme]);
 
   const navigate = (next: PageKey) => {
     setPage(next);
     setMenuOpen(false);
   };
 
+  if (!auth.currentUser) {
+    if (entry === "landing") {
+      return <Landing onLogin={() => setEntry("login")} onRegister={() => setEntry("register")} />;
+    }
+
+    return (
+      <AuthPage
+        mode={entry}
+        onBack={() => setEntry("landing")}
+        onModeChange={setEntry}
+        onLogin={auth.login}
+        onRegister={auth.register}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Sidebar active={page} open={menuOpen} onToggle={() => setMenuOpen((value) => !value)} onNavigate={navigate} />
       <div className="lg:pl-72">
-        <Header settings={finance.settings} />
+        <Header settings={finance.settings} user={auth.currentUser} onProfile={() => navigate("settings")} onLogout={auth.logout} />
         <PageContainer>
           {page === "dashboard" && <Dashboard transactions={finance.transactions} goals={finance.goals} wallets={finance.wallets} />}
           {page === "transactions" && <Transactions transactions={finance.transactions} categories={finance.categories} wallets={finance.wallets} currentMonth={finance.currentMonth} saveTransaction={finance.saveTransaction} removeTransaction={finance.removeTransaction} />}
@@ -39,7 +60,7 @@ export default function App() {
           {page === "reports" && <Reports transactions={finance.transactions} currentMonth={finance.currentMonth} />}
           {page === "goals" && <Goals goals={finance.goals} saveGoal={finance.saveGoal} removeGoal={finance.removeGoal} />}
           {page === "wallets" && <Wallets wallets={finance.wallets} saveWallet={finance.saveWallet} removeWallet={finance.removeWallet} />}
-          {page === "settings" && <Settings settings={finance.settings} saveSettings={finance.saveSettings} restoreSeed={finance.restoreSeed} clearAll={finance.clearAll} />}
+          {page === "settings" && <Settings settings={finance.settings} user={auth.currentUser} updateProfile={auth.updateProfile} saveSettings={finance.saveSettings} restoreSeed={finance.restoreSeed} clearAll={finance.clearAll} />}
         </PageContainer>
       </div>
       <AnimatePresence>

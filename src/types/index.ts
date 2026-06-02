@@ -52,6 +52,15 @@ export interface UserSettings {
   compactView: boolean;
 }
 
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: "admin" | "user";
+  createdAt: string;
+}
+
 export interface FinanceData {
   transactions: Transaction[];
   categories: Category[];

@@ -72,8 +72,8 @@ export function Dashboard({ transactions, goals, wallets }: { transactions: Tran
         <article className="finance-panel rounded-2xl p-6">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Status operacional</p>
           <div className="mt-5 grid gap-4">
-            <div className="flex items-center justify-between"><span className="text-sm font-semibold text-slate-400">Banco Supabase</span><Badge tone="green">Pronto</Badge></div>
-            <div className="flex items-center justify-between"><span className="text-sm font-semibold text-slate-400">Persistencia local</span><Badge tone="blue">Ativa</Badge></div>
+            <div className="flex items-center justify-between"><span className="text-sm font-semibold text-slate-400">Workspace privado</span><Badge tone="green">Ativo</Badge></div>
+            <div className="flex items-center justify-between"><span className="text-sm font-semibold text-slate-400">Multi-tenancy</span><Badge tone="blue">Isolado</Badge></div>
             <div className="flex items-center justify-between"><span className="text-sm font-semibold text-slate-400">Relatorios</span><Badge tone="purple">Exportavel</Badge></div>
           </div>
         </article>

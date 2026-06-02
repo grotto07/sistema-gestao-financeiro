@@ -38,7 +38,7 @@ export function Sidebar({ active, open, onToggle, onNavigate }: { active: PageKe
           <p className="mt-2 text-sm font-bold text-slate-100">Pessoal + Empresa</p>
           <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-300">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,.9)]" />
-            Dados sincronizaveis
+            Workspace isolado
           </div>
         </div>
         <nav className="grid gap-2">

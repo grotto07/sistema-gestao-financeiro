@@ -1,14 +1,25 @@
 import { useMemo, useState } from "react";
 import { seedData } from "../data/seed";
-import { Category, FinanceData, Goal, Transaction, Wallet, UserSettings } from "../types";
+import { AuthUser, Category, FinanceData, Goal, Transaction, Wallet, UserSettings } from "../types";
 import { getCurrentMonth, walletBalance } from "../utils/calculations";
 import { useLocalStorage } from "./useLocalStorage";
 
-const key = "finansmart:data";
 const makeId = (prefix: string) => `${prefix}-${crypto.randomUUID()}`;
 
-export function useFinance() {
-  const [data, setData] = useLocalStorage<FinanceData>(key, seedData);
+function tenantSeed(user: AuthUser | null): FinanceData {
+  return {
+    ...seedData,
+    settings: {
+      ...seedData.settings,
+      userName: user?.name || seedData.settings.userName,
+    },
+  };
+}
+
+export function useFinance(user: AuthUser | null) {
+  const storageKey = `finansmart:data:${user?.id || "guest"}`;
+  const initialData = useMemo(() => tenantSeed(user), [user?.id, user?.name]);
+  const [data, setData] = useLocalStorage<FinanceData>(storageKey, initialData);
   const [toast, setToast] = useState("");
 
   const notify = (message: string) => {
@@ -84,12 +95,12 @@ export function useFinance() {
   };
 
   const restoreSeed = () => {
-    setData(seedData);
+    setData(initialData);
     notify("Dados restaurados com sucesso");
   };
 
   const clearAll = () => {
-    setData({ ...seedData, transactions: [], goals: [], wallets: [], categories: seedData.categories });
+    setData({ ...initialData, transactions: [], goals: [], wallets: [], categories: seedData.categories });
     notify("Dados limpos com sucesso");
   };
 

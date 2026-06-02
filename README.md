@@ -34,8 +34,16 @@ O app ainda usa LocalStorage como fonte principal, mas ja tem o client em `src/l
 
 ## Uso basico
 
-1. Acesse `Transacoes` e clique em `Nova receita` ou `Nova despesa`.
-2. Preencha titulo, valor, categoria, forma de pagamento, data, status e recorrencia.
-3. Use os filtros por mes, tipo, categoria e busca por titulo.
-4. Acesse `Relatorios` para selecionar mes/ano e exportar o resumo.
-5. Acesse `Configuracoes` para restaurar os dados de exemplo quando quiser recomecar.
+1. Na landing page, clique em `Entrar` ou `Criar conta`.
+2. Para teste rapido, use usuario `admin` e senha `admin`.
+3. Acesse `Transacoes` e clique em `Nova receita` ou `Nova despesa`.
+4. Preencha titulo, valor, categoria, forma de pagamento, data, status e recorrencia.
+5. Use os filtros por mes, tipo, categoria e busca por titulo.
+6. Acesse `Relatorios` para selecionar mes/ano e exportar o resumo.
+7. Acesse `Configuracoes` para editar perfil, restaurar dados de exemplo ou limpar o workspace.
+
+## Login e multi-tenancy
+
+- O app tem landing page, login, cadastro e usuario admin de demonstracao.
+- Cada usuario salva os dados em uma chave propria do LocalStorage: `finansmart:data:<userId>`.
+- Isso evita que um usuario veja transacoes, metas, carteiras e configuracoes de outro usuario no mesmo navegador.
