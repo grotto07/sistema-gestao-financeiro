@@ -56,7 +56,7 @@ export const seedData: FinanceData = {
   settings: {
     userName: "Felipe",
     currency: "BRL",
-    theme: "light",
+    theme: "dark",
     compactView: false,
   },
 };

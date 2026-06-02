@@ -5,11 +5,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Poppins", "Inter", "system-ui", "sans-serif"],
-        body: ["Open Sans", "Inter", "system-ui", "sans-serif"],
+        display: ["IBM Plex Sans", "Inter", "system-ui", "sans-serif"],
+        body: ["IBM Plex Sans", "Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(15, 23, 42, 0.08)",
+        soft: "0 18px 60px rgba(2, 6, 23, 0.16)",
+        finance: "0 22px 70px rgba(2, 6, 23, 0.28)",
       },
     },
   },

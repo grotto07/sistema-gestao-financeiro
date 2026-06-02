@@ -6,10 +6,10 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variants = {
-  primary: "bg-blue-600 text-white shadow-soft hover:bg-blue-700 focus:ring-blue-500",
-  secondary: "bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 dark:bg-zinc-900 dark:text-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800",
+  primary: "bg-emerald-400 text-slate-950 shadow-soft hover:bg-emerald-300 focus:ring-emerald-400",
+  secondary: "border border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700 dark:hover:bg-slate-800",
   danger: "bg-rose-600 text-white hover:bg-rose-700 focus:ring-rose-500",
-  ghost: "text-slate-700 hover:bg-slate-100 dark:text-zinc-200 dark:hover:bg-zinc-800",
+  ghost: "text-slate-300 hover:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-800",
 };
 
 export function Button({ variant = "primary", className = "", children, ...props }: Props) {

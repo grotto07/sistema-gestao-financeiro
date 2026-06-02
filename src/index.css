@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  background: #f8fafc;
+  color-scheme: dark;
+  background: #020617;
 }
 
 .dark {
@@ -17,18 +17,22 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: "Open Sans", system-ui, sans-serif;
-  color: #0f172a;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  color: #e5e7eb;
   background:
-    radial-gradient(circle at 8% 5%, rgba(37, 99, 235, 0.12), transparent 26rem),
-    linear-gradient(135deg, #f8fafc 0%, #eef2ff 48%, #f9fafb 100%);
+    linear-gradient(115deg, rgba(34, 197, 94, 0.12), transparent 28rem),
+    radial-gradient(circle at 88% 4%, rgba(59, 130, 246, 0.16), transparent 30rem),
+    radial-gradient(circle at 62% 68%, rgba(15, 23, 42, 0.92), transparent 34rem),
+    #020617;
 }
 
 .dark body {
   color: #e5e7eb;
   background:
-    radial-gradient(circle at 8% 5%, rgba(37, 99, 235, 0.18), transparent 26rem),
-    linear-gradient(135deg, #09090b 0%, #18181b 54%, #0f172a 100%);
+    linear-gradient(115deg, rgba(34, 197, 94, 0.12), transparent 28rem),
+    radial-gradient(circle at 88% 4%, rgba(59, 130, 246, 0.16), transparent 30rem),
+    radial-gradient(circle at 62% 68%, rgba(15, 23, 42, 0.92), transparent 34rem),
+    #020617;
 }
 
 * {
@@ -40,6 +44,31 @@ select,
 input,
 textarea {
   font: inherit;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.28);
+}
+
+.finance-panel {
+  border: 1px solid rgba(51, 65, 85, 0.82);
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.9)),
+    rgba(15, 23, 42, 0.92);
+  box-shadow: 0 24px 80px rgba(2, 6, 23, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.finance-surface {
+  border: 1px solid rgba(51, 65, 85, 0.72);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.metric-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+  background-size: 26px 26px;
 }
 
 @media (prefers-reduced-motion: reduce) {
