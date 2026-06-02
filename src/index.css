@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background: #f8fafc;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Open Sans", system-ui, sans-serif;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at 8% 5%, rgba(37, 99, 235, 0.12), transparent 26rem),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 48%, #f9fafb 100%);
+}
+
+.dark body {
+  color: #e5e7eb;
+  background:
+    radial-gradient(circle at 8% 5%, rgba(37, 99, 235, 0.18), transparent 26rem),
+    linear-gradient(135deg, #09090b 0%, #18181b 54%, #0f172a 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+select,
+input,
+textarea {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
